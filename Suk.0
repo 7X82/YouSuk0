@@ -1,0 +1,152 @@
+-- Code bank --
+
+game.Workspace.PartA.Anchored = true
+game.Workspace.PartA.BrickColor = BrickColor.new("Really black")
+wait(10)
+game.Workspace.PartA.Anchored = true
+game.Workspace.PartA.Position = Vector3.new (1,2,1)
+game.Workspace.PartA.BrickColor = BrickColor.new ("Really red")
+wait(10)
+game.Workspace.PartA.Anchored = true
+game.Workspace.PartA.Position = Vector3.new(1,3,1)
+game.Workspace.PartA.BrickColor = BrickColor.new ("Baby blue")
+wait(10)
+game.Workspace.PartA.Anchored = true
+game.Workspace.PartA.Position = Vector3.new(1,4,1)
+game.Workspace.PartA.BrickColor = BrickColor.new ("Neon orange")
+wait(10)
+game.Workspace.PartA.Anchored = true
+game.Workspace.PartA.Position = Vector3.new(1,5,1)
+game.Workspace.PartA.BrickColor = BrickColor.new ("Pastel brown")
+wait(10)
+game.Workspace.PartA.Anchored = true
+game.Workspace.PartA.Position = Vector3.new(1,6,1)
+game.Workspace.PartA.BrickColor = BrickColor.new ("Pastel violet")
+wait(10)
+print("FAIL!")
+game.Workspace.PartA.Anchored = false
+-------------------------------------------------------------------------------------------------------------------------------------
+local Num = 9
+local NewNum = 9
+print(NewNum)
+wait(1)
+print(9*1)
+print(9*2)
+print(9*3)
+print(9*4)
+wait(1)
+print(9*5)
+print(9*6)
+print(9*7)
+print(9*8)
+print(9*9)
+wait(1)
+if 9 < 5 then 
+    print("Fail")
+else    
+    print("Nice")
+    
+end
+------------------------------------------------------------------------------------------------------------------------------------
+game.Workspace.BB.BrickColor = BrickColor.new("Navy blue")
+game.Workspace.AA.BrickColor = BrickColor.new("Baby blue")
+wait(5)
+local AA11 = BrickColor.new("Navy blue")
+local BB22 = BrickColor.new("Baby blue")
+if game.Workspace.AA.BrickColor == AA11 then
+    print("BB22")
+elseif game.Workspace.BB.BrickColor == BB22 then
+    print("AA22")
+end
+---------------------------------------------------------------------------------------------------------------------------------------
+game.Workspace.Phill.Anchored = true
+game.Workspace.Phill.BrickColor = BrickColor.new("Really black")
+game.Workspace.Phill.BrickColor = BrickColor.new("Navy blue")
+local Phill = 1
+for i = 1,50,1 do
+    game.Workspace.Phill.BrickColor = BrickColor.new("Really black")
+    wait(2)
+    game.Workspace.Phill.BrickColor = BrickColor.new("Navy blue")
+    wait(2)
+    if i == 1 then
+        print("Loop!")
+    else
+        print("Loop number"..i.."!")
+    end
+end
+
+-----------------------------------------------------------------------------------------------------------------------
+local Var1 = game.Workspace.Bob
+
+while true do
+    wait(0.01)
+    Var1.Anchored = true
+    Var1.Position = Var1.Position + Vector3.new(-1,0,-0)
+end
+-----------------------------------------------------------------------------------------------------------------------------------
+
+local player = game:GetService("Players"):WaitForChild("LocalPlayer") -- get localplayer
+local character = player.Character or player.CharacterAdded:Wait() -- get character
+local humanoid = character:WaitForChild("Humanoid") -- get humanoid
+local Rootpart = character:WaitForChild("HumanoidRootPart")
+
+Rootpart:GetPropertyChangedSignal("Position"):Connect(function() -- function that fires whenever the position is changed, if you use loop, that will give you a lower performance.
+    if Rootpart.Position.Y > 300 then -- check if player's position (rootpart) position is higher than Y 300. you can change it if you need.
+        -- your function here
+    end
+end)
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+game.Players.PlayerAdded:Conect(function(plr)
+    local stat = Instance.new("Folder",plr)
+stat.Name = "leaderstats"
+
+local money = Instance.new("NumberValue", stat)
+money.Name = "Money"
+money.Value = 0
+end)
+-----------------------------------------------------------------------------------------------------------------------------
+
+game.ReplicatedStorage.Flag.OnServerEvent:Connect(function(plr, char)
+for _, flag in pairs (workspace.FlagCapture:GetChildren()) do
+local name = game.Workspace.FlagCapture.FlagCapture.FlagSettings.name
+if name.Value ~= "".. plr.Name then
+flag.Flag.Decal.Texture = "--roblox flag id--" ..plr.Name
+flag.Flag.Decal2.Texture = "--roblox flag id--" ..plr.Name
+flag.PlayerName.BillboradGui.TextLabel.Text = ""..plr.Name
+flag.Flag.BodyPosition.Position = flag.Start.Position
+flag.Flag.Color = Color3.new(math.random(0,255),math.random(0,255))
+wait(2.5)
+flag.Flag.BodyPosition.Position = flag.End.Position
+repeat wait(game.Workspace.FlagCapture.FlagCapture.FlagSettings.Time.Value)
+local amount = game.Workspace.FlagCapture.FlagCapture.FlagSettings.Amount.Value
+game.Players[name.Value] .leaderstats.Money.Value = game.Players [name.Value] .leaderstats.Money.Value + amount
+until name.Value == "!"
+else
+
+end
+end
+end
+end)
+plr = workspace:WaitForChild(script.Parent.Name)
+local char = workspace:WaitForChild(script.Parent.Name)
+local runservice = game:GetService("RunService")
+
+runservice.RenderStepped:Connect(function()
+game.ReplicatedStorage.Flag:FireServer(char) 
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+local Angulo = math.rad(0)
+
+while true do
+    script.Parent.Part.CFrame = CFrame()*CFrame.Angles (0,Angulo,0)
+    Angulo = Angulo + math.rad(1)
+    wait(1)
+end
+
+
+
+
+
+
